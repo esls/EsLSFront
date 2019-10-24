@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Welcome";
+    if (Context.Request.Cookies.ContainsKey("EsLSAuth"))
+        ViewData["Authenticated"] = true;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to EsLS</h1>
+    <p class="text-success">Live Demo</p>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        Get started
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">License management</h5>
+        @if (ViewData["Authenticated"] != null)
+        {
+            <p class="card-text">To view, search for, and manage licenses, head to the License browser.</p>
+            <a class="btn btn-primary" asp-area="" asp-controller="Licenses" asp-action="Index">Take me there</a>
+        }
+        else
+        {
+            <p class="card-text">To view, search for, and manage licenses, you'll need to log in first.</p>
+            <a class="btn btn-primary" asp-area="" asp-controller="Auth" asp-action="Login">Log in »</a>
+        }
+    </div>
+</div>

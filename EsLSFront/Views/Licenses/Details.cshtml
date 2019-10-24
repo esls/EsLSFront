@@ -1,0 +1,67 @@
+﻿@model FrontLicenseModel
+@{
+    ViewData["Title"] = "License details";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form asp-action="Details">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="id-label">🔢</span>
+        </div>
+        <input type="text" class="form-control" placeholder="ID" aria-label="ID" asp-for="Id" aria-describedby="id-label" readonly>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="date-label">📆</span>
+        </div>
+        <input type="date" class="form-control" placeholder="Creation date" aria-label="Creation date" asp-for="CreationDate" aria-describedby="date-label">
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="name-label">🏷</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Full name" aria-label="Full name" asp-for="FullName" aria-describedby="name-label">
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="email-label">📧</span>
+        </div>
+        <input type="text" class="form-control" placeholder="E-mail" aria-label="E-mail" asp-for="Email" aria-describedby="email-label">
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="key-label">🔑</span>
+        </div>
+        <input type="text" class="form-control" placeholder="License key" aria-label="License key" asp-for="LicenseKey" aria-describedby="key-label">
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="price-label">💵</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Price" aria-label="Price" asp-for="Price" aria-describedby="key-label">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    @if (Model.UpdatedSuccessfully != null)
+    {
+        if (Model.UpdatedSuccessfully.Value)
+        {
+            <p class="text-success">Updated successfully</p>
+        }
+        else
+        {
+            <p class="text-danger">Update failed</p>
+        }
+    }
+</form>
